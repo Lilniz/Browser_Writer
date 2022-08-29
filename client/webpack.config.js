@@ -18,6 +18,7 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
+      new GenerateSW(),
       new WebpackPwaManifest({
         name: "Browser-writer",
         short_name: "BWs",
