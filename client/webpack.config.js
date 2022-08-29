@@ -18,12 +18,11 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-      new GenerateSW(),
       new WebpackPwaManifest({
         name: "Browser-writer",
         short_name: "BWs",
         description: "Starter Browser Text App",
-        // background_color: "#555555",
+        fingerprints: false,
         start_url: "./",
         publicPath: "./",
         inject: true,
@@ -52,6 +51,10 @@ module.exports = () => {
         {
           test: /\.css$/i,
           use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: 'asset/resource',
         },
         {
           test: /\.m?js$/,
